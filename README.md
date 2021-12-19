@@ -2,21 +2,41 @@
 Repository containing the instructions and scripts for getting started with Google cloud
 
 
-## Set up your GCP 
+## Set up your GCP Acccount and Launch an instance
 
 1. Use the code and sign up for a GCP account
 2. Log in to the console
-3. Launch an instance from Compute engine with basic 1Gb RAM, 10 GB persistence,  Ubuntu 64-bit version
-4. Create set of keys by adding to the metadata of the instance in the edit option
-5. If you are using a mac or Linux machine, go to the terminal and type: ssh-keygen -t rsa
-6. Paste your public key in the metadata section
-7. For mac users, it will be created in cd /Users/<username>/.ssh (For windows use, puttygen)
-8. ssh -i <private_key> username@instance_ip
+3. From the side menu panel, select Compute Engine and click on "Enable API"
+4. Launch an instance from Compute engine screen with basic 1Gb RAM, 10 GB persistence,  Ubuntu 64-bit version
+5. Click on the instance and select the edit option. Go to the "ssh keys" section
+7. Go back to your local machine. If you are using a mac or Linux machine, go to the terminal and type: ssh-keygen -t rsa.
+8. Paste your public key (id_rsa.pub - the default key) in the metadata section (to copy the public key just do cat id_rsa.pub and copy the contents)
+9. For mac users, it will be created in cd /Users/<username>/.ssh by default 
+10. Find the external IP of the instance from the home page
+11. Log in to the instance using ssh -i <private_key> username@instance_ip (example: ssh -i id_rsa karthik@38.12.116.122)
+12. You are now inside your GCP instance. 
+    
+### For Windows Users
+1. After step 5 above, download the program "Putty" from https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows
+2. Use the program puttygen to generate the public and private keys. Follow the instructions in https://medium.com/@narayanan_ramakrishnan/connecting-to-a-google-cloud-virtual-machine-with-ssh-using-putty-7b6f0c0465cb
+    
+    
+## Deploying a microservice
+1. Copy the Login service folder to your instance using command: scp -i key.pem -r /path-to-your-code/ username@ipadress:/home/username/foldername/
+2. Check if Python3 is installed in the instance by typing: python3. By default Python will be installed in your instance
+
+### Set up the Python Environment
+
+1. sudo apt-get update
+2. sudo apt-get -y install python3-pip
+3. pip3 install tornado
+4. pip3 install requests
+ 
 
 
 
 ## Install Apache web server
-
+    
 1. sudo apt-get update
 2. sudo apt-get install apache2
 3. sudo apt-get install vim (For easy editing)
