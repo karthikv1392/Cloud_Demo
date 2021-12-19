@@ -1,4 +1,4 @@
-# Cloud_Demo
+# Cloud Computing Hands on using Google Cloud
 Repository containing the instructions and scripts for getting started with Google cloud
 
 
