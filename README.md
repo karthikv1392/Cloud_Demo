@@ -8,7 +8,7 @@ Repository containing the instructions and scripts for getting started with Goog
 2. Log in to the console
 3. Launch an instance from Compute engine with basic 1Gb RAM, 10 GB persistence,  Ubuntu 64-bit version
 4. Create set of keys by adding to the metadata of the instance in the edit option
-5. ssh-keygen -t rsa
+5. If you are using a mac or Linux machine, go to the terminal and type: ssh-keygen -t rsa
 6. Paste your public key in the metadata section
 7. For mac users, it will be created in cd /Users/<username>/.ssh (For windows use, puttygen)
 8. ssh -i <private_key> username@instance_ip
