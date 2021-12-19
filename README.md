@@ -44,16 +44,22 @@ Repository containing the instructions and scripts for getting started with Goog
 3. Add the port number(s) to which the access has to be provided.
 4. Add the tag by editing the instance (Network-tags)
 5. Make a rest call to your service using the JSON. To do this, you can either make use of RESTED client (plugin for Google Chrome - https://chrome.google.com/webstore/detail/rested/eelcnbccaccipfolokglfhhmapdchbfg) or using POSTMAN - https://www.postman.com/downloads/
+    
+  ```shell
     {
      "username" : "sample",
      "password" : "sample123"
     }
- 6. If everything goes correctly you will get a JSON with successfull response:
+   ```
     
+6. If everything goes correctly you will get a JSON with successfull response:
+    
+  ```shell
     {
   "status": "success",
   "login": "success"
-}
+    }
+  ```
     
 
 Disclaimer: Better way is to provide access via a proxy. Please find the instructions below
@@ -90,8 +96,32 @@ You have successfully deployed a web service on your instance !!
 ### Installing Docker
     
 For Linux/Mac users:
+    
+1. sudo apt-get update
+2. sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+3. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+4. echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+5. sudo apt-get update
+6. sudo apt-get install docker-ce docker-ce-cli containerd.io
+7. Test the installation: sudo docker run hello-world
+    
+### Building the Container
 
+1. cd in to the Login_Service directory
+2. There will be a file named "Dockerfile". Verify if the structure is correct
 
+```shell
+    sudo docker build -t login_service .
+    sudo docker run -it --name login_container -p 8895:8895 login_service
+```
+3. Make calls using REST to test the login service
+ 
  
 ## Exercise
 
