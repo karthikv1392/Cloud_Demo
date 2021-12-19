@@ -33,6 +33,14 @@ Repository containing the instructions and scripts for getting started with Goog
 4. pip3 install requests
  
 
+3. Go inside the folder Login Service: cd Login_Service/app
+4. Run the microservice: python3 app.py
+5. You will be able to see a message "Starting Tornado Web Server for Login Service on 8895" which shows that the service is running
+
+    
+### Testing your microservice
+
+
 
 
 ## Install Apache web server
