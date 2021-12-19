@@ -43,6 +43,18 @@ Repository containing the instructions and scripts for getting started with Goog
 2. From the menu of the instance -> select network details -> Create firewall rule
 3. Add the port number(s) to which the access has to be provided.
 4. Add the tag by editing the instance (Network-tags)
+5. Make a rest call to your service using the JSON. To do this, you can either make use of RESTED client (plugin for Google Chrome - https://chrome.google.com/webstore/detail/rested/eelcnbccaccipfolokglfhhmapdchbfg) or using POSTMAN - https://www.postman.com/downloads/
+    {
+     "username" : "sample",
+     "password" : "sample123"
+    }
+ 6. If everything goes correctly you will get a JSON with successfull response:
+    
+    {
+  "status": "success",
+  "login": "success"
+}
+    
 
 Disclaimer: Better way is to provide access via a proxy. Please find the instructions below
 
@@ -60,7 +72,7 @@ Disclaimer: Better way is to provide access via a proxy. Please find the instruc
 4. sudo a2enmod lbmethod_byrequests
 5. sudo systemctl restart apache2
 6. cd /etc/apache2/sites-available
-7. sudo vim 000-default-sites.conf
+7. sudo vim 000-default.conf 
 8. Inside the <Virtualhost:*80> add the following  (press insert button to edit, for mac users, press "i")
 
     ProxyPreserveHost On
@@ -69,37 +81,17 @@ Disclaimer: Better way is to provide access via a proxy. Please find the instruc
 
     (Press "esc :wq" to save and exit vim)
 
-### Enable Google Vision API
-
-1. From the navigation menu in the Google Cloud Services, select "API's and Services"
-2. Above will take you inside the dashboard view of API's and servies, Press "Enable APIs and Services" button (with + sign)
-3. Search for "Cloud Vision API" in the search bar and press enter
-4. Click on "Cloud Vision API" and click on the "Enable" button
-5. Go back to the Google Cloud main console
-6. Select "API's and Services" from the navigation menu on the left
-7. Click on "Credentials" from the left pane
-8. Press "Create Credentials" -> "API key"
-9. A key will be created, Copy the key and paste it in a text in your local machine "api_key.txt"
-
-### Starting the Service
-
-1. Go to the directory where the code has been copied
-2. Open the settings.conf using command vim settings.conf
-3. Add the copied API key in the api_key field of settings.conf
-4. Save and exit settings.conf (esc :wq)
-5. Run the services using the command "Python Vision_Service.py"
-6. You should be able to see "Starting service on Port 8065"
-
-### Making Request to the WebService
-
-1. Go back to your local machine and open "upload_post_server.html" from the clonned Git repository
-2. Edit the line 8 of the html using text editor (This line <form enctype="multipart/form-data" action="http://localhost:8065/analyze" method="post">)
-3. Replace the url in line 8 with "http://yourinstanceip/getImageDetails"
-4. Open the html in a browser, click on the upload button and select any image file
-5. Click submit and check the response
-    
+ 9. Test your service by making a REST request to the URL: http://<gcp instance ip>/auth
 
 You have successfully deployed a web service on your instance !!
+    
+## Containerizing your microservice
+    
+### Installing Docker
+    
+For Linux/Mac users:
+
+
  
 ## Exercise
 
