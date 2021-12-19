@@ -39,9 +39,12 @@ Repository containing the instructions and scripts for getting started with Goog
 
     
 ### Testing your microservice
+1. Configure the firewall rules to enable the port.
+2. From the menu of the instance -> select network details -> Create firewall rule
+3. Add the port number(s) to which the access has to be provided.
+4. Add the tag by editing the instance (Network-tags)
 
-
-
+Disclaimer: Better way is to provide access via a proxy. Please find the instructions below
 
 ## Install Apache web server
     
@@ -50,32 +53,21 @@ Repository containing the instructions and scripts for getting started with Goog
 3. sudo apt-get install vim (For easy editing)
 
 
+## Configure Apache for Proxy
+1. sudo a2enmod proxy
+2. sudo a2enmod proxy_http
+3. sudo a2enmod proxy_balancer
+4. sudo a2enmod lbmethod_byrequests
+5. sudo systemctl restart apache2
+6. cd /etc/apache2/sites-available
+7. sudo vim 000-default-sites.conf
+8. Inside the <Virtualhost:*80> add the following  (press insert button to edit, for mac users, press "i")
 
-## Set up the Python Environment
+    ProxyPreserveHost On
 
-1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-2. bash <Miniconda_file>.sh
-3. source ~/.bashrc (For changes to take effect)
-4. pip install tornado
+    ProxyPass /auth http://localhost:8895/login
 
-## Deploy a webservice in GCP compute
-
-1. Copy the web service to your instance using scp -i key.pem -r /path to your code/ username@ipadress:/home/username/foldername/
-2. Enable proxy in apache :
-    1. sudo a2enmod proxy
-    2. sudo a2enmod proxy_http
-    3. sudo a2enmod proxy_balancer
-    4. sudo a2enmod lbmethod_byrequests
-    5. sudo systemctl restart apache2
-    6. cd /etc/apache2/sites-available
-    7. sudo vim 000-default-sites.conf
-    8. Inside the <Virtualhost:*80> add the following  (press insert button to edit, for mac users, press "i")
-    
-        ProxyPreserveHost On
-        
-        ProxyPass /getImageDetails http://localhost:8065/analyze
-        
-        (Press "esc :wq" to save and exit vim)
+    (Press "esc :wq" to save and exit vim)
 
 ### Enable Google Vision API
 
