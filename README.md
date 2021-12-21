@@ -121,12 +121,15 @@ For Linux/Mac users:
     sudo docker run -it --name login_container -p 8895:8895 login_service
 ```
 3. Make calls using REST to test the login service
- 
- 
-## Exercise
+    
 
-1. Deploy a hello world app in the app engine https://cloud.google.com/appengine/docs/standard/python/quickstart
-2. Install Jupyter notebook in your instance and access it from your local machine
+## Dockerhub
+    
+1. docker pull karthikv1392/login_service:latest
+2. docker run --rm -p 8895:8895 docker/versekarthikv1392/login_service:tagname
+ 
+ 
+
 
 
 # Kafka Commands
@@ -168,4 +171,7 @@ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
 
 
+## Exercise
 
+1. Deploy a hello world app in the app engine https://cloud.google.com/appengine/docs/standard/python/quickstart
+2. Install Jupyter notebook in your instance and access it from your local machine
