@@ -17,12 +17,13 @@ Repository containing the instructions and scripts for getting started with Goog
 12. You are now inside your GCP instance. 
     
 ### For Windows Users
-1. After step 5 above, download the program "Putty" from https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows
-2. Use the program puttygen to generate the public and private keys. Follow the instructions in https://medium.com/@narayanan_ramakrishnan/connecting-to-a-google-cloud-virtual-machine-with-ssh-using-putty-7b6f0c0465cb
+1. After step 5 above, download the program "Putty" from [here](https://www.puttygen.com/download-putty#Download_PuTTY_073_for_Windows)
+2. Use the program puttygen to generate the public and private keys. Follow the instructions [here](https://medium.com/@narayanan_ramakrishnan/connecting-to-a-google-cloud-virtual-machine-with-ssh-using-putty-7b6f0c0465cb)
     
     
 ## Deploying a microservice
 1. Copy the Login service folder to your instance using command: scp -i key.pem -r /path-to-your-code/ username@ipadress:/home/username/foldername/
+   If you are using windows, you can make use of [FileZilla](https://filezilla-project.org) or [WinScp](https://winscp.net/eng/download.php)
 2. Check if Python3 is installed in the instance by typing: python3. By default Python will be installed in your instance
 
 ### Set up the Python Environment
@@ -126,9 +127,7 @@ For Linux/Mac users:
 ## Dockerhub
     
 1. docker pull karthikv1392/login_service:latest
-2. docker run --rm -p 8895:8895 docker/versekarthikv1392/login_service:tagname
- 
- 
+2. docker run --rm -p 8895:8895 karthikv1392/login_service:latest
 
 
 
