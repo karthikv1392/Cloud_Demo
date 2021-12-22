@@ -1,6 +1,16 @@
 # Cloud Computing Hands on using Google Cloud
 Repository containing the instructions and scripts for getting started with Google cloud
 
+## Agenda
+
+1. Setting up GCP account and launching an instance
+2. Deploying a microservice without containers
+3. Setting up Proxy
+4. Using Screen and running the service
+5. Containerizing the microservice
+6. Deploying and testing the container
+7. Connecting to Apache Kafka
+
 
 ## Set up your GCP Acccount and Launch an instance
 
@@ -173,4 +183,4 @@ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 ## Exercise
 
 1. Deploy a hello world app in the app engine https://cloud.google.com/appengine/docs/standard/python/quickstart
-2. Install Jupyter notebook in your instance and access it from your local machine
+2. Try to write a simple cloud function that connects with a cloud db of your choice (Firestore or Big table)
